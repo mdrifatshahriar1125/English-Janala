@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Janala A-6</title>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        .active {
+            background-color: #60A5FA;
+            color: white;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navigation section -->
+    <nav id="navsection"
+        class="hidden w-full mx-auto fixed top-0 z-50 bg-gray-100  shadow-md border-b-2 border-gray-400 py-4 px-24 flex justify-between items-center ">
+        <!-- Logo and Brand Name -->
+        <div class="flex items-center space-x-2">
+            <span class="font-bold ">English</span>
+            <img src="assets/logo.png" alt="Logo" class="h-8 w-8">
+            <span class="text-xl font-bold">জানালা</span>
+        </div>
+
+        <!-- right side Buttons -->
+        <div class="flex space-x-4">
+            <button id="faq-btn" 
+                class=" flex items-center space-x-2 px-4 py-2 shadow-md bg-white border border-blue-800 text-blue-900 rounded-lg font-bold hover:bg-blue-400 hover:text-white">
+                <img src="assets/fa-circle-question.png" alt="">
+                <span>FAQ</span>
+            </button>
+            <button id="learn-btn"
+                class="flex items-center space-x-2 px-4 py-2 shadow-md bg-white border border-blue-800 text-blue-900 font-bold rounded-lg hover:bg-blue-400 hover:text-white">
+                <img src="assets/fa-book-open.png" alt="">
+
+                <span>Learn</span>
+            </button>
+            <button id="logout" onclick="logout()"
+                class="flex items-center space-x-2 px-4 py-2 shadow-md bg-white border border-blue-800 rounded-lg font-bold text-blue-900 hover:bg-blue-400 hover:text-white">
+                <img src="assets/fa-arrow-right-from-bracket.png" alt="">
+                <span>Logout</span>
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- Banner Section -->
+    <section id="banner" class="flex items-center justify-between px-10 py-20  w-11/12 mx-auto ">
+        <!-- Left Side: Text and Login Form -->
+        <div class=" space-y-4 ">
+            <h1 class="text-5xl font-bold"><span class="text-[#00BCFF]">English</span> is Easy!!</h1>
+            <p class="text-gray-600 text-xl w-[750px]">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা 
+                আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে <br> যাবে অন্য একটি Level এ</p>
+            <div class=" py-4 rounded-lg  w-64">
+                <input type="email" placeholder="Enter Your Name" required id="name"
+                    class="w-full p-2 border border-gray-400 rounded-md mb-2">
+                <input type="password" placeholder="Enter Your Password" required id="pass"
+                    class="w-full p-2 border border-gray-400 rounded-md mb-2">
+                <button id="btn-login" class=" bg-[#3D26C7] text-white py-2 px-4 rounded-md hover:bg-blue-500 hover:text-white font-semibold">Get
+                    Started</button>
+            </div>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class=" flex justify-start items-center pr-16">
+            <img src="assets/hero-student.png" alt="Learning Image" class="h-[500px] rounded-full border-4 border-blue-400">
+        </div>
+    </section>
+
+
+    <!--  Vocabularies section -->
+    <section id="Vocabularies-section" class="hidden w-11/12 mx-auto mt-32 mb-20">
+        <div class="text-5xl font-bold flex justify-center items-center py-5 flex gap-3"><span
+                class="text-[#00BCFF]">Let's</span> Learn Vocabularies</div>
+        <!-- dianamically add button section -->
+        <div id="btn-dianamically" class=" py-7 flex justify-center items-center gap-3">
+            <!-- make a prototype button below -->
+            <!-- <button onclick="lessoninfoapi2()" class="border-2 border-blue-800 py-2 px-4 flex items-center justify-center rounded-md gap-2 font-semibold text-blue-800">
+                <img class="h-4" src="assets/fa-book-open.png" alt=""> Lesson-${element.level_no}</button> -->
+        </div>
+        <!-- loader section -->
+        <div id="loader" class="hidden text-center">
+
+            <span class="loading loading-dots loading-xl"></span>
+        </div>
+
+        <!-- dianamically or static card section -->
+        <div id="lessoncard"
+            class="card-section bg-gray-100 py-10 rounded-md flex flex-col justify-center items-center">
+            <h1 class="text-center pt-5 pb-3 ">আপনি এখনো কোন Lesson Select করেন নি</h1>
+            <h1 class="text-4xl text-center  pb-5">একটি Lesson Select করুন।</h1>
+        </div>
+        <!-- practice lesson card -->
+        <!-- <div class=" grid grid-cols-3 gap-12 bg-white shadow-sm rounded-md px- px-5">
+            <div class="flex flex-col justify-center items-center py-8 border-2">
+                <p class="font-bold text-xl">Eager</p>
+                <p class="font-semibold">Meaning /Pronounciation</p>
+                <p class="font-bold text-xl text-[#18181B90]">"আগ্রহী / ইগার"</p>
+                <div class="flex  gap-56">
+                    <div class="p-3 bg-[#1A91FF20] rounded-md">
+                        <img class="h-4 w-4" src="assets/info.png" alt="">
+                    </div>
+                    <div class="p-3 bg-[#1A91FF20] rounded-md">
+                        <img class="h-4 w-4" src="assets/sound small.png" alt="">
+
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
+    </section>
+
+    <!-- faq section -->
+    <section id="faq-section" class="hidden w-11/12 mx-auto my-24">
+        <h1 class="text-center text-5xl font-bold my-16"><span class="text-[#00BCFF] ">Frequently</span> Asked Questions
+        </h1>
+
+
+        <div class=" flex flex-col gap-5 ">
+            <div class="collapse collapse-plus bg-gray-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" checked="checked" />
+                <div class="collapse-title font-semibold">What is the difference between var, let, and const?</div>
+                <div class="collapse-content text-sm">var is function-scoped, let is block-scoped, and const is also
+                    block-scoped but cannot be reassigned</div>
+            </div>
+            <div class="collapse collapse-plus bg-gray-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">What is the difference between map(), forEach(), and filter()?
+                </div>
+                <div class="collapse-content text-sm">map() returns a new array, forEach() iterates without returning,
+                    and filter() returns an array with elements that match a condition.</div>
+            </div>
+            <div class="collapse collapse-plus bg-gray-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">Explain arrow functions and how they are different from
+                    regular functions.</div>
+                <div class="collapse-content text-sm">Arrow functions in JavaScript provide a shorter syntax for writing
+                    functions and do not have their own "this", instead inheriting it from their surrounding scope.
+                    Unlike regular functions, they cannot be used as constructors, lack "arguments", and do not have
+                    their own "this" binding, making them ideal for callbacks and functional programming.</div>
+            </div>
+            <div class="collapse collapse-plus bg-gray-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">How do JavaScript Promises work?</div>
+                <div class="collapse-content text-sm">Promises handle asynchronous operations by representing a value
+                    that may be available now, later, or never.</div>
+            </div>
+            <div class="collapse collapse-plus bg-gray-100 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">How do closures work in JavaScript?</div>
+                <div class="collapse-content text-sm">A closure is a function that retains access to its lexical scope
+                    even when executed outside that scope.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- loading section -->
+
+
+
+    <!-- add modal -->
+    <!-- <button class="btn" onclick="flashcard_modal.showModal()">Open Flashcard</button> -->
+
+    <dialog id="flashcard_modal" class="modal modal-bottom sm:modal-middle ">
+        <div class="modal-box px-4 pt-4  ">
+            <div class="border-2 border-gray-200 p-3 rounded-md ">
+                <h2 class="text-2xl font-bold mb-2 flex"><span id="wordname">Eager</span> ( <img src="assets/microphone.png"
+                    alt=""> <span id="Pronounciation1" class="mr-1">ইগার</span> )</h2>
+
+            <div class="mb-4">
+                <h3 class="font-semibold">Meaning</h3>
+                <p id="wordmeaning">আগ্রহী</p>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="font-semibold">Example</h3>
+                <p id="wordexample">The kids were eager to open their gifts.</p>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="font-semibold">সমার্থক শব্দ গুলো</h3>
+                <div id="synoname" class="flex space-x-3 my-3 ">
+                    <!-- <span class="bg-[#06060620] rounded-md px-3 py-2  text-sm font-semibold">Enthusiastic</span> -->
+
+                </div>
+            </div>
+            </div>
+
+            <div class="modal-action flex justify-start">
+                <form method="dialog">
+                    <button class="btn bg-blue-500 hover:bg-blue-600 text-white rounded-md">Complete Learning</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-50 shadow-md border-t-2 border-gray-300 py-12">
+        <div class="w-11/12 mx-auto  flex justify-between">
+            <div class="flex flex-col justify-start gap-3 ">
+                <div class="flex items-center ">
+                    <span class="font-bold text-xl">English</span>
+                    <img src="assets/logo.png" alt="Logo" class="h-8 w-8">
+                    <span class=" font-semibold">জানালা</span>
+                </div>
+                <p class="font-bold">ইংরেজি শিখুন সহজে</p>
+                <p class="">Providing ED-Tech Applications since 2025</p>
+            </div>
+            <div class="flex flex-col justify-center items-center space-x-4">
+                <p class="font-semibold">Follow Us</p>
+                <div class="flex gap-2">
+                    <img class="w-6 h-6" src="assets/fb-thumb.png" alt="">
+                    <img class="w-6 h-6" src="assets/instagram-thumb.png" alt="">
+                    <img class="w-6 h-6" src="assets/youtube-thumb.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="script/index.js"></script>
+</body>
+
+</html>
