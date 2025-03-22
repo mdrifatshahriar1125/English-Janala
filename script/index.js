@@ -173,22 +173,20 @@ document.getElementById("btn-login").addEventListener("click", function () {
     let password = document.getElementById("pass").value.trim();
     //    console.log(password.value)
     if (name === "") {
-        alert("Please enter your name!");
+        // alert("Please enter your name!");
+        swal("Please enter your name!");
+
         return;
     }
     if (password !== "123456") {
-        alert("Incorrect password! Try again.");
+        // alert("Incorrect password! Try again.");
+        swal("Incorrect password! Try again . ");
         return;
     }
     // alert("Login Successful!");
-    alert(`Welcome, ${name}!`)
-    // Swal.fire({
-    //     position: "top-end",
-    //     icon: "success",
-    //     title: "Your work has been saved",
-    //     showConfirmButton: false,
-    //     timer: 1500
-    //   });
+    // alert(`Welcome, ${name}!`)
+    swal(`Welcome, ${name}!`, " Let's Learn English ", "success");
+
     document.getElementById("navsection").classList.remove("hidden")
     document.getElementById("banner").classList.add("hidden")
     document.getElementById("Vocabularies-section").classList.remove("hidden")
